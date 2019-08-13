@@ -1,0 +1,131 @@
+package com.lawtendo.cmtool.application.helper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.lawtendo.cmtool.application.utils.Utils;
+
+public class Permission {
+
+	private static Map<String, List<String>> permissionMap = null;
+	
+	public static List<String> getRights(String role){
+		
+		if(permissionMap == null) {
+			
+			List<String> adminRights = new ArrayList<>();
+			//admin routes
+			adminRights.add("/private");
+			
+			
+			
+			List<String> userRights = new ArrayList<>();
+			//user routes
+			userRights.add("/private");
+			
+			
+			List <String> guestRights = new ArrayList<>();
+			//guest routes
+			
+			guestRights.add("/webindex");
+			guestRights.add("/user/get");
+			
+			guestRights.add("/case/create");
+			guestRights.add("/case/getByCuidAndUuid");
+			guestRights.add("/case/updateByCuidAndUuid");
+			guestRights.add("/case/deleteByCuidAndUuid");
+			guestRights.add("/case/getAllByUuid");
+			guestRights.add("/case/getByUuidAndCategory");
+			
+			guestRights.add("/contact/create");
+			guestRights.add("/contact/getAllByUuid");
+			guestRights.add("/contact/getByCuidAndUuid");
+			guestRights.add("/contact/updateByCuidAndUuid");
+			guestRights.add("/contact/deleteByConuid");
+			
+			guestRights.add("/doc/get");
+			guestRights.add("/doc/upload");
+			guestRights.add("/doc/getByuuid");
+			guestRights.add("/doc/getByUuidAndCuid");
+			
+			guestRights.add("/event/create");
+			
+			guestRights.add("/invoice/create");
+			guestRights.add("/invoice/getAllByUuid");
+			guestRights.add("/invoice/getByUuidAndCuid");
+<<<<<<< HEAD
+=======
+			guestRights.add("/invoice/deleteInvoiceByIuidAndCuidAndUuid");
+			guestRights.add("/invoice/updateInvoiceByIuidAndCuidAndUuid");
+>>>>>>> 4ea28a13ebaf14f729f0eada9e932492c2209c93
+			
+			guestRights.add("/caseLawyerObj/get");
+			guestRights.add("/caseLawyerObj/add");
+			guestRights.add("/caseLawyerObj/getById");
+			guestRights.add("/caseLawyerObj/updateById");
+			guestRights.add("/caseLawyerObj/delById");
+			
+			
+			guestRights.add("/logout");
+			
+			
+			
+			List <String> publicRights = new ArrayList<>();
+			//public routes
+			publicRights.add("/login");
+			publicRights.add("/signup");
+			publicRights.add("/google-auth");
+<<<<<<< HEAD
+=======
+			
+>>>>>>> 4ea28a13ebaf14f729f0eada9e932492c2209c93
+//			publicRights.add("/calendar/create");
+//			
+//			publicRights.add("/doc/upload");
+//			publicRights.add("/case/create");
+//			publicRights.add("/case/getByCuidAndUuid");
+//			publicRights.add("/case/updateByCuidAndUuid");
+//			publicRights.add("/case/deleteByCuidAndUuid");
+//			publicRights.add("/case/getAllByUuid");
+//			publicRights.add("/case/getByUuidAndCategory");
+//			
+//			publicRights.add("/invoice/create");
+//			publicRights.add("/invoice/getAllByUuid");
+//			publicRights.add("/invoice/getByUuidAndCuid");
+//			publicRights.add("/invoice/deleteInvoiceByIuidAndCuidAndUuid");
+//			publicRights.add("/invoice/updateInvoiceByIuidAndCuidAndUuid");
+//			
+//			publicRights.add("/contact/create");
+//			publicRights.add("/contact/getAllByUuid");
+//			publicRights.add("/contact/getByCuidAndUuid");
+//			publicRights.add("/contact/updateByCuidAndUuid");
+//			publicRights.add("/contact/deleteByConuid");
+<<<<<<< HEAD
+//			publicRights.add("/htmlToPdf/convert");
+=======
+			
+>>>>>>> 4ea28a13ebaf14f729f0eada9e932492c2209c93
+			
+			
+			
+			
+			
+			
+			
+			
+			permissionMap = new HashMap<String, List<String>>();
+			permissionMap.put(Utils.ROLE_ADMIN, adminRights);
+			permissionMap.put(Utils.ROLE_USER, userRights);
+			permissionMap.put(Utils.ROLE_GUEST, guestRights);
+			permissionMap.put(Utils.ROLE_PUBLIC, publicRights);
+			
+			
+			return permissionMap.get(role);
+		}else {
+			return permissionMap.get(role);
+		}
+	}
+	
+}

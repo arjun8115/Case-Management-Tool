@@ -1,0 +1,133 @@
+package com.lawtendo.cmtool.application.service;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.lawtendo.cmtool.application.DAO.CaseDAO;
+import com.lawtendo.cmtool.application.repository.CaseRepo;
+import com.lawtendo.cmtool.application.utils.Utils;
+
+@Service
+public class CaseService {
+
+	@Autowired
+	CaseRepo caseRepo;
+	
+	private static final Logger logger = LoggerFactory.getLogger(CaseService.class);
+	
+	/**
+	 * create a case
+	 * */
+	public CaseDAO saveCase(CaseDAO caseObj) {
+		logger.info("CaseService -> saveCase");
+		
+		Timestamp timestamp = Utils.getTimestamp();
+		caseObj.setUpdatedAt(timestamp);
+		caseObj.setCreatedAt(timestamp);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 4ea28a13ebaf14f729f0eada9e932492c2209c93
+		CaseDAO caseObj1 = caseRepo.save(caseObj);
+		return caseObj1 != null ? caseObj1 : null;
+	}
+	
+	/**
+	 * 
+	 * (get particular case)
+	 * 
+	 * get a case by case_id
+	 * 
+	 * */
+	public CaseDAO findCaseByCaseId(String caseId) {
+		if(caseId != null) {
+			logger.info("CaseService -> findCaseByCaseId");
+			CaseDAO caseObj = caseRepo.findByCaseId(caseId);
+			return caseObj != null ? caseObj : null;
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * (get particular case)
+	 * 
+	 * get a case by cuid
+	 * 
+	 * */
+	public CaseDAO findCaseByCuid(String cuid) {
+		if(cuid != null) {
+			logger.info("CaseService -> findCaseByCuid");
+			CaseDAO caseObj = caseRepo.findByCuid(cuid);
+			return caseObj != null ? caseObj : null;
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * (get particular case of a particular lawyer)
+	 * 
+	 * get a case by cuid and uuid
+	 * 
+	 * */
+	public CaseDAO findCaseByCuidAndUuid(String cuid, String uuid){
+		if(cuid != null && uuid != null) {
+			logger.info("CaseService -> findCasesOfUuid");
+			CaseDAO caseObj = caseRepo.findByCuidAndUuid(cuid, uuid);
+			return caseObj != null ? caseObj : null;
+		}
+		return null;
+	}
+	
+	/**
+	 * 
+	 * (get all case of a particular lawyer)
+	 * 
+	 * get a case by cuid and uuid
+	 * 
+	 * */
+	public List<CaseDAO> findCasesByUuid(String uuid){
+		if(uuid != null) {
+			logger.info("CaseService -> findCasesOfUuid");
+			List<CaseDAO> casesList = caseRepo.findByUuid(uuid);
+			return casesList != null ? casesList : null;
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * (get cases of particular category and particular lawyer)
+	 * 
+	 * get a case by uuid and category
+	 * 
+	 * */
+	public List<CaseDAO> findCasesByUuidAndCategory(String uuid, String category){
+		if(uuid != null && category != null) {
+			logger.info("CaseService -> findCaseByUuidAndCategory");
+			List<CaseDAO> cases = caseRepo.findByUuidAndCategory(uuid, category);
+			return cases.size() > 0  ? cases : null;
+		}
+		return null;
+	}
+	
+	/**
+	 * delete a case by cuid and uuid
+	 * */
+	public Long deleteCaseByCuidAndUuid(String cuid, String uuid) {
+		if(cuid != null && uuid != null) {
+			logger.info("CaseService -> deleteCaseByCuid");
+			
+			return caseRepo.deleteByCuidAndUuid(cuid, uuid);
+		}
+		return null;
+	}
+	
+		
+}

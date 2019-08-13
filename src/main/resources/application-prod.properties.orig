@@ -1,0 +1,23 @@
+spring.profiles=production
+spring.profile.active=production
+
+spring.datasource.jdbc-url=jdbc:postgresql://cmtooldb.cej0jnjrachm.ap-southeast-1.rds.amazonaws.com:5432/cmtooldb
+spring.datasource.username=postgres
+spring.datasource.password=cmtool_12345
+spring.datasource.platform=postgres
+spring.datasource.driverClassName=org.postgresql.Driver
+spring.datasource.maximumPoolSize=5
+
+spring.jpa.database=POSTGRESQL
+spring.jpa.show-sql=false
+spring.jpa.generate-ddl=false
+hibernate.show_sql=false
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation=true
+liquibase.change-log=classpath:/META-INF/migrations/db.changelog-master.yaml
+<<<<<<< HEAD
+
+=======
+  
+>>>>>>> afec72714b90753fd6ab8b62a90851856295e9e7
+server.port=${PORT:8080}
